@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* fonts */
+@font-face {
+  font-family: ubuntu;
+  src: url("./assets/Fonts/ubuntu.ttf");
+}
+
+body {
+  font-family: ubuntu;
+}
+
+/* header area */
+.nav-link {
+  @apply uppercase lg:text-lg font-medium text-clr-accent;
+}
