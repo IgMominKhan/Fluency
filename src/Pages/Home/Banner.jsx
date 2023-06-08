@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
+import { motion } from "framer-motion";
 
 // Import Swiper styles
 import "swiper/css";
@@ -38,7 +39,7 @@ const Banner = () => {
       <Swiper
         centeredSlides={true}
         autoplay={{
-          delay: 3500,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -51,12 +52,20 @@ const Banner = () => {
       >
         {slides.map((item, i) => (
           <SwiperSlide key={i}>
-            <img src={item.image} />
+            <img src={item.image} lazy="true" />
 
-            <div className="absolute z-20 text-white top-1/2 left-20 -translate-y-1/2 max-w-xl">
-              <h1 className='title'>{item.title}</h1>
-              <Button className="px-8 uppercase mt-5">sign up</Button>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, }}
+              whileInView={{ opacity: 1, y: "-50%" }}
+              className="absolute z-20 text-white top-1/2 left-8 md:left-20 -translate-y-1/2 max-w-xl"
+            >
+              <h1 className="title">
+                {item.title}
+              </h1>
+              <Button className="px-8 uppercase font-semibold leading-tight mt-5">
+                sign up
+              </Button>
+            </motion.div>
           </SwiperSlide>
         ))}
         <div className="autoplay-progress" slot="container-end">
