@@ -57,7 +57,7 @@ const Banner = () => {
             <motion.div
               initial={{ opacity: 0, }}
               whileInView={{ opacity: 1, y: "-50%" }}
-              className="absolute z-20 text-white top-1/2 left-8 md:left-20 -translate-y-1/2 max-w-xl"
+              className="absolute z-20 text-white top-1/2 md:left-20 px-5 -translate-y-1/2 max-w-xl"
             >
               <h1 className="title">
                 {item.title}
