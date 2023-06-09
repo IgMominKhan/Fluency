@@ -12,6 +12,14 @@ body {
   font-family: ubuntu;
 }
 
+/* reuseable classes */
+section {
+  @apply py-12 md:py-16 lg:py-20
+}
+
+.main-container {
+  @apply w-11/12 mx-auto max-w-7xl
+}
 /* header area */
 .nav-link {
   @apply uppercase lg:text-lg font-medium text-clr-accent;
@@ -46,3 +54,9 @@ body {
   stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
   stroke-dasharray: 125.6;
 }
+
+/* popular classes */
+
+  .card img {
+   @apply max-h-[15rem] object-cover object-right-top 
+  }

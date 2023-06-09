@@ -5,10 +5,10 @@ import { NavLink } from "react-router-dom";
 const NavigationBar = () => {
   const { user } = useAuth();
   return (
-    <div>
+    <div className="main-container">
       <Navbar
         fluid
-        className="py-8 !bg-clr-primary"
+        className="py-8"
       >
         <Navbar.Brand
           href="https://flowbite-react.com"
@@ -59,7 +59,7 @@ const NavigationBar = () => {
             )
             : (
               <NavLink>
-                <Button className="!bg-clr-accent text-white px-8 hidden md:inline-block">
+                <Button className="uppercase text-white px-8 hidden md:inline-block">
                   Login
                 </Button>
               </NavLink>
@@ -95,7 +95,7 @@ const NavigationBar = () => {
               Contact
             </NavLink>
           </Navbar.Link>
-          <Button className="md:hidden mt-5 self-start !bg-clr-accent text-white px-8">
+          <Button className="uppercase md:hidden mt-5 self-start text-white px-8">
             Login
           </Button>
         </Navbar.Collapse>

@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext("");
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // ovserve user's state
