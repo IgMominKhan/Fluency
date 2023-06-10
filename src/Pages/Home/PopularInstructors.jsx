@@ -15,7 +15,7 @@ const PopularInstructors = () => {
       <h1 className="title text-center ">
         Our <span className="text-clr-primary">Popular</span> Instructors
       </h1>
-      <div className="my-12 grid gap-5  grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
+      <div className="my-12 grid gap-7  grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] justify-center">
         {popularInstructors.map((instructor, i) => (
           <InstructorCard key={i} instructor={instructor} />
         ))}

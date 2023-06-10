@@ -17,7 +17,7 @@ const PopularClasses = () => {
       <h1 className="title text-center ">
         Our <span className="text-clr-accent">Popular</span> Classes
       </h1>
-      <div className="my-12 grid gap-5  grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
+      <div className="my-12 grid gap-7  grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
         {popularClasses.map((item, i) => <ClassCard key={i} item={item} />)}
       </div>
     </section>

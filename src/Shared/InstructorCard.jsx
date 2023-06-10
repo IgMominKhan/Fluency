@@ -16,11 +16,11 @@ const InstructorCard = ({ instructor }) => {
   } = instructor;
   return (
     <motion.div
-      initial={{ x: 150, y: 100 }}
+      initial={{ x: -150, y: 100 }}
       whileInView={{ x: 0, y: 0 }}
       transition={{ duration: .7 }}
     >
-      <Card className="relative  max-w-sm mx-auto">
+      <Card className="relative max-w-sm md:max-w-none mx-auto">
         <div className="text-center mb-5">
           <img className="object-cover rounded-full w-60 h-60 mx-auto" src={image} alt="" />
         </div>
@@ -59,7 +59,7 @@ const InstructorCard = ({ instructor }) => {
           </div>
           <p><b>Total Students :</b> {total_students}</p>
           <p><b>Total Classes :</b> {total_classes}</p>
-          <div className="treangle"><span className='rotate-45 absolute -mt-6 text-white'>Best</span></div>
+          <div className="triangle"><span className='rotate-45 absolute -mt-6 text-white'>Top</span></div>
         </div>
       </Card>
     </motion.div>

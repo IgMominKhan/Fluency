@@ -10,6 +10,7 @@
 
 body {
   font-family: ubuntu;
+  overflow-x: hidden;
 }
 
 /* reuseable classes */
@@ -64,9 +65,13 @@ section {
 
 /* popular teachers */
 
-.treangle {
-  @apply w-0 h-0 m-0 absolute !border-t-cyan-700 !border-e-cyan-700;
+.triangle {
+  @apply w-0 h-0 m-0 absolute !border-t-cyan-700 !border-e-cyan-700 text-white;
   border: 2.25rem solid transparent;
   top: -1.2rem;
   right: -1px;
+}
+
+.not-available {
+  @apply !border-t-red-500 !border-e-red-500 leading-tight
 }
