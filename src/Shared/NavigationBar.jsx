@@ -11,7 +11,7 @@ const NavigationBar = () => {
         className="py-8"
       >
         <Navbar.Brand
-          href="https://flowbite-react.com"
+          href="/"
           className="justify-center md:justify-start md:flex-none flex-1 "
         >
           <span className="self-center whitespace-nowrap text-3xl font-semibold text-clr-accent dark:text-white">
@@ -72,7 +72,7 @@ const NavigationBar = () => {
               Home
             </NavLink>
           </Navbar.Link>
-          <NavLink>
+          <NavLink to='/instructors'>
             <Navbar.Link as="span" className="nav-link">
               Instructors
             </Navbar.Link>

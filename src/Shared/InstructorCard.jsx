@@ -2,16 +2,20 @@ import { Card } from "flowbite-react";
 import { motion } from "framer-motion";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import Rating from "react-rating";
+import { useLocation } from "react-router-dom";
 
 const InstructorCard = ({ instructor }) => {
+  const isInstructorPath = useLocation().pathname.includes("instructors");
   const {
     name,
+    email = "example@domain.com",
     image,
     rating,
     total_students,
     total_classes,
     teaching_level,
     experience,
+    top = total_students >= 50,
     subject_areas,
   } = instructor;
   return (
@@ -22,10 +26,15 @@ const InstructorCard = ({ instructor }) => {
     >
       <Card className="relative max-w-sm md:max-w-none mx-auto">
         <div className="text-center mb-5">
-          <img className="object-cover rounded-full w-60 h-60 mx-auto" src={image} alt="" />
+          <img
+            className="object-cover rounded-full w-60 h-60 mx-auto"
+            src={image}
+            alt=""
+          />
         </div>
         <div className="space-y-4 flex-1">
           <h4 className="text-3xl">{name}</h4>
+          {isInstructorPath && <p className="!mt-2 italic">{email}</p>}
           <p>
             {subject_areas.map((s) => (
               <span className="mr-2 py-1 rounded px-2 bg-cyan-200 text-sm">
@@ -57,9 +66,17 @@ const InstructorCard = ({ instructor }) => {
               {rating}
             </p>
           </div>
-          <p><b>Total Students :</b> {total_students}</p>
-          <p><b>Total Classes :</b> {total_classes}</p>
-          <div className="triangle"><span className='rotate-45 absolute -mt-6 text-white'>Top</span></div>
+          <p>
+            <b>Total Students :</b> {total_students}
+          </p>
+          <p>
+            <b>Total Classes :</b> {total_classes}
+          </p>
+          {top && (
+            <div className="triangle">
+              <span className="rotate-45 absolute -mt-6 text-white">Top</span>
+            </div>
+          )}
         </div>
       </Card>
     </motion.div>
