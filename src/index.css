@@ -14,11 +14,11 @@ body {
 
 /* reuseable classes */
 section {
-  @apply py-12 md:py-16 lg:py-20
+  @apply py-12 md:py-16 lg:py-20;
 }
 
 .main-container {
-  @apply w-11/12 mx-auto max-w-7xl
+  @apply w-11/12 mx-auto max-w-7xl;
 }
 /* header area */
 .nav-link {
@@ -26,13 +26,13 @@ section {
 }
 
 .title {
-  @apply text-[clamp(1.5rem,1rem+3vw,3.5rem)] font-semibold leading-tight
+  @apply text-[clamp(1.5rem,1rem+3vw,3.5rem)] font-semibold leading-tight;
 }
 
 /* banner area  */
 .swiper-slide {
-    @apply min-h-[300px]
-  }
+  @apply min-h-[300px];
+}
 
 .swiper-slide img {
   display: block;
@@ -41,9 +41,10 @@ section {
   object-fit: cover;
 }
 
-.swiper-button-prev, .swiper-button-next {
-    @apply !hidden md:!flex
-  }
+.swiper-button-prev,
+.swiper-button-next {
+  @apply !hidden md:!flex;
+}
 .autoplay-progress {
   @apply absolute right-4 bottom-4 z-10 w-12 h-12 flex items-center justify-center font-bold text-clr-primary;
 }
@@ -57,6 +58,15 @@ section {
 
 /* popular classes */
 
-  .card img {
-   @apply max-h-[15rem] object-cover object-right-top 
-  }
+.card img {
+  @apply max-h-[15rem] object-cover object-right-top;
+}
+
+/* popular teachers */
+
+.treangle {
+  @apply w-0 h-0 m-0 absolute !border-t-cyan-700 !border-e-cyan-700;
+  border: 2.25rem solid transparent;
+  top: -1.2rem;
+  right: -1px;
+}
