@@ -6,6 +6,7 @@ export default {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    darkMode: "media",
     extend: {
       colors: {
         "clr-primary": "#023059",

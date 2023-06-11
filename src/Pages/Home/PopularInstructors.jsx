@@ -10,7 +10,7 @@ const PopularInstructors = () => {
     );
   }, []);
   return (
-    <section className="bg-clr-accent">
+    <section className="bg-clr-accent dark:bg-black/90 dark:text-white">
     <div className="main-container">
       <h1 className="title text-center ">
         Our <span className="text-clr-primary">Popular</span> Instructors

@@ -27,7 +27,7 @@ section {
 }
 
 .title {
-  @apply text-[clamp(1.5rem,1rem+3vw,3.5rem)] font-semibold leading-tight;
+  @apply text-[clamp(1.5rem,1rem+3vw,3.5rem)] font-semibold leading-tight dark:text-white;
 }
 
 /* banner area  */

@@ -52,20 +52,22 @@ const Banner = () => {
       >
         {slides.map((item, i) => (
           <SwiperSlide key={i}>
-            <img src={item.image} lazy="true" />
+            <div className="bg-black/50 inset-0 relative z-20">
+              <img src={item.image} lazy="true" />
 
-            <motion.div
-              initial={{ opacity: 0, }}
-              whileInView={{ opacity: 1, y: "-50%" }}
-              className="absolute z-20 text-white top-1/2 md:left-20 px-5 -translate-y-1/2 max-w-xl"
-            >
-              <h1 className="title">
-                {item.title}
-              </h1>
-              <Button className="px-8 uppercase font-semibold leading-tight mt-5">
-                sign up
-              </Button>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, y: "-50%" }}
+                className="absolute z-20 text-white top-1/2 md:left-20 px-5 -translate-y-1/2 max-w-xl"
+              >
+                <h1 className="title">
+                  {item.title}
+                </h1>
+                <Button className="px-8 uppercase font-semibold leading-tight mt-5">
+                  sign up
+                </Button>
+              </motion.div>
+            </div>
           </SwiperSlide>
         ))}
         <div className="autoplay-progress" slot="container-end">
