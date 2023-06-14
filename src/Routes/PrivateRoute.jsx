@@ -1,0 +1,23 @@
+import { Navigate } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+import { Button, Spinner } from "flowbite-react";
+
+const PrivateRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="grid place-items-center h-screen -mt-20">
+        <Button>
+          <Spinner aria-label="Spinner button example" />
+          <span className="pl-3">
+            Loading...
+          </span>
+        </Button>
+      </div>
+    );
+  } else if (user) return children;
+  else return <Navigate to="/login" state={{ from: location }} />;
+};
+
+export default PrivateRoute;

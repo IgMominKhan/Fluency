@@ -5,7 +5,6 @@ import FooterSection from "../Shared/Footer";
 
 const HomeLayout = () => {
   const { user } = useAuth();
-  console.log(user);
   return (
     <>
       <NavigationBar />

@@ -37,11 +37,12 @@ const NavigationBar = () => {
             Fluency
           </span>
         </Navbar.Brand>
-        <div className="relative flex flex-row-reverse md:flex-row -mt-10 md:mt-0 md:order-2 w-full md:w-fit justify-between">
-          <DarkThemeToggle className={user ? "!me-14" : "!me-4"} />
+        <div className="relative flex flex-row-reverse md:flex-row -mt-10 md:mt-0 order-2 w-full md:w-fit justify-between">
+          <DarkThemeToggle className="!me-14 " />
           {user
             ? (
               <Dropdown
+                className="relative right-0"
                 arrowIcon={false}
                 inline
                 label={
@@ -87,7 +88,7 @@ const NavigationBar = () => {
         </div>
         <Navbar.Collapse className="md:justify-center me-8">
           <Navbar.Link as="span" className="nav-link">
-            <NavLink>
+            <NavLink to="/">
               Home
             </NavLink>
           </Navbar.Link>
@@ -100,19 +101,19 @@ const NavigationBar = () => {
               </Navbar.Link>
             )}
 
-          <NavLink to="/instructors">
+          <NavLink to="selected-classes">
             <Navbar.Link as="span" className="nav-link">
-              Instructors
+              My Selected Classes
             </Navbar.Link>
           </NavLink>
           <Navbar.Link as="span" className="nav-link">
-            <NavLink to="/classes">
-              Classes
+            <NavLink to="enrolled-classes">
+              My Enrolled Classes
             </NavLink>
           </Navbar.Link>
           <Navbar.Link as="span" className="nav-link">
-            <NavLink>
-              Contact
+            <NavLink to="payment-history">
+              Payment History
             </NavLink>
           </Navbar.Link>
           <Button className="uppercase md:hidden mt-5 self-start text-white !bg-cyan-800 dark!bg-cyan-700 px-8">
