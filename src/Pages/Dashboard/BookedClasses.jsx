@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ClassCard from "../../Shared/ClassCard";
+import useAuth from "../../Hooks/useAuth";
 
 const BookedClasses = () => {
+  const { user } = useAuth();
   const [classes, setClasses] = useState([]);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axiosSecure.get("/cart?student_status=booked").then(
+    axiosSecure.get(`/cart?email=${user?.email}&status=booked`).then(
       (res) => setClasses(res.data),
     );
   }, []);
