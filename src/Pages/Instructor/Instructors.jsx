@@ -5,7 +5,7 @@ import InstructorCard from '../../Shared/InstructorCard'
 const Instructors = () => {
   const [instructor, setInstructor] = useState([]);
   useEffect(() => {
-    axios.get("teachers.json").then((res) => setInstructor(res.data));
+    axios.get("https://fluency-server.vercel.app/users?role=instructor").then((res) => setInstructor(res.data));
   }, []);
   return (
     <main className="bg-clr-terciary">

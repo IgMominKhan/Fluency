@@ -19,6 +19,7 @@ const NavigationBar = () => {
     logout().then(
       () => {
         setUser(null);
+        localStorage.removeItem("token");
         Swal.fire("Opps!", "Signed out", "info"), redirect("/");
       },
     );

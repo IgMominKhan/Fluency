@@ -5,7 +5,9 @@ import ClassCard from "../../Shared/ClassCard";
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
-    axios.get("data.json").then((res) => setClasses(res.data));
+    axios.get("https://fluency-server.vercel.app/classes?status=approved").then(
+      (res) => setClasses(res.data)
+    )
   }, []);
   return (
     <main className=" bg-clr-secondary">

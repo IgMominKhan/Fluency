@@ -4,11 +4,14 @@ import { Button, Card } from "flowbite-react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const ClassCard = ({ item }) => {
- const {user} = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const role = "amin";
   const {
+    _id,
     title,
     teacher,
     image,
@@ -20,10 +23,35 @@ const ClassCard = ({ item }) => {
     duration,
   } = item;
 
-  // handle booking 
-  const handleBooking = ()=> {
-    if(!user) Swal.fire('Attention!','You must login First for Booking','info',{timer:2000})
-  }
+  // handle booking
+  const handleBooking = () => {
+    if (!user) {
+      return (
+        Swal.fire("Attention!", "You must login First for Booking", "info", {
+          timer: 2000,
+        })
+      );
+    }
+    axiosSecure.post(`/cart?email=${user?.email}`, {
+      class_id: _id,
+      student_email: user?.email,
+      student_status: "booked",
+      title,
+      teacher,
+      image,
+      rating,
+      price,
+      duration,
+    })
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire("Success", "Class added to cart", "success");
+        }
+        if (res.data.message) {
+          Swal.fire("Ohh!", `${res.data.message}`, "error");
+        }
+      }).catch((err) => console.dir(err));
+  };
   return (
     <motion.div
       initial={{ x: 150, y: 100 }}
@@ -70,7 +98,8 @@ const ClassCard = ({ item }) => {
           </span>
           <Button
             onClick={handleBooking}
-            disabled={!total_available_sit || (role == "admin" || role=="instructor")}
+            disabled={!total_available_sit ||
+              (role == "admin" || role == "instructor")}
             className="rounded-lg px-4 py-1 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-800 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
           >
             Book Now

@@ -19,6 +19,7 @@ const NavigationBar = () => {
     logout().then(
       () => {
         setUser(null);
+        localStorage.removeItem("token");
         Swal.fire("Opps!", "Signed out", "info"), redirect("/");
       },
     );
@@ -67,10 +68,11 @@ const NavigationBar = () => {
                     Dashboard
                   </Dropdown.Item>
                 </NavLink>
+                <Dropdown.Item>My Classes</Dropdown.Item>
                 <Dropdown.Item>
                   Settings
-                </Dropdown.Item>{" "}
-                <Dropdown.Item>My Classes</Dropdown.Item> <Dropdown.Divider />
+                </Dropdown.Item>
+                <Dropdown.Divider />
                 <Dropdown.Item onClick={handleLogout}>
                   Sign out
                 </Dropdown.Item>

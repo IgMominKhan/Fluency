@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext("");
 
@@ -19,7 +20,17 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        axios.post("https://fluency-server.vercel.app/jwt", {
+          email: currentUser.email,
+        })
+          .then((res) => {
+            console.log(res.data);
+            localStorage.setItem("token", res.data);
+            setLoading(false);
+          })
+          .catch((err) => console.dir(err));
+      }
     });
     return () => unsubscribe();
   }, []);

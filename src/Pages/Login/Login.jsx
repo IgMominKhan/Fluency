@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const { login } = useAuth();
@@ -26,6 +27,13 @@ const Login = () => {
   const handleLogin = (data) => {
     login(data.email, data.password)
       .then(() => {
+        axios.post("https://fluency-server.vercel.app/jwt", {
+          email: data.email,
+        })
+          .then((res) => {
+            localStorage.setItem("token", res.data);
+          })
+          .catch((err) => console.dir(err));
         redirect(from || "/");
       })
       .catch((err) => {
