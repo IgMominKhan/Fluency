@@ -51,7 +51,11 @@ const Routes = createBrowserRouter(
         </PrivateRoute>
       ),
       children: [
-        {
+        // {
+        //   path: '',
+        //   element: <StudentDashboard />
+        // }
+        , {
           path: "selected-classes",
           element: <BookedClasses />,
         },
