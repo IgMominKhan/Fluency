@@ -25,10 +25,11 @@ const Registation = () => {
           }).then(() => {
             setUser(userCredential.user);
 
-            axios.post("https://n5l3sm-3000.csb.app/users", {
-              email: userCredential.user.email,
-              role: "user",
+            axios.post("https://fluency-server.vercel.app/users", {
+              email: data.email,
+              role: "student",
               image: data.photo,
+              name: data.name,
             });
             redirect(from || "/");
           });
@@ -202,8 +203,8 @@ const Registation = () => {
           <Button type="submit">
             Register new account
           </Button>
-          
-         {/* social login secton */}
+
+          {/* social login secton */}
           <SocialLogin />
         </form>
       </section>

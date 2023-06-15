@@ -6,7 +6,7 @@ const EnrolledClasses = () => {
 
   refetch();
   return (
-    <main className=" bg-clr-secondary">
+    <main className="h-full min-h-screen bg-clr-secondary">
       <section className="main-container">
         <h1 className="title text-center mb-12">
           My <span className="text-clr-accent">Enrolled</span> Classes
