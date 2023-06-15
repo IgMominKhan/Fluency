@@ -3,10 +3,11 @@ import useAdmin from "../Hooks/useAdmin";
 import useAuth from "../Hooks/useAuth";
 import { Button, Spinner } from "flowbite-react";
 
-const AdminRoute = () => {
+const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
   const location = useLocation();
+  console.log(isAdmin);
 
   if (loading || isAdminLoading) {
     return (

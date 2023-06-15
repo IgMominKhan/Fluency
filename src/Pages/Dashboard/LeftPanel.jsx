@@ -1,17 +1,25 @@
+import useAuth from "../../Hooks/useAuth";
 import { DarkThemeToggle, Sidebar } from "flowbite-react";
-import {
-  HiArrowSmLeft,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiUser,
-  HiViewBoards,
-} from "react-icons/hi";
-import { MdLiveHelp } from "react-icons/md";
+import { HiArrowSmLeft, HiChartPie, HiShoppingBag } from "react-icons/hi";
+import { MdAdd, MdLiveHelp, MdNaturePeople, MdPeople } from "react-icons/md";
 import { BsCartFill, BsFillBookmarkCheckFill, BsGear } from "react-icons/bs";
-import { FaHistory } from "react-icons/fa";
+import { FaHistory, FaUserGraduate } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const LeftPanel = ({ role }) => {
+  const { setUser, logout } = useAuth();
+  const redirect = useNavigate();
+  // handle logout
+  const handleLogout = () => {
+    logout().then(
+      () => {
+        setUser(null);
+        localStorage.removeItem("token");
+        Swal.fire("Opps!", "Signed out", "info"), redirect("/");
+      },
+    );
+  };
   return (
     <>
       <Sidebar className="h-screen [&>div]:rounded-none w-full max-w-xs">
@@ -43,14 +51,14 @@ const LeftPanel = ({ role }) => {
                   </Link>
                 </Sidebar.Item>
                 <Sidebar.Item as="span" icon={BsFillBookmarkCheckFill}>
-                  <Link to="/dashboard/enrolled-classes">
+                  <Link to="enrolled-classes">
                     <p>
                       My Enrolled Classes
                     </p>
                   </Link>
                 </Sidebar.Item>
                 <Sidebar.Item as="span" icon={BsCartFill}>
-                  <Link to="/dashboard/selected-classes">
+                  <Link to="selected-classes">
                     <p>
                       My Selected Classes
                     </p>
@@ -60,7 +68,7 @@ const LeftPanel = ({ role }) => {
                   as="span"
                   icon={FaHistory}
                 >
-                  <Link to="/dashboard/payment-history">
+                  <Link to="payment-history">
                     <p>
                       Payment History
                     </p>
@@ -68,9 +76,68 @@ const LeftPanel = ({ role }) => {
                 </Sidebar.Item>
               </>
             )}
+            {role === "instructor" && (
+              <>
+                <Sidebar.Item
+                  as="span"
+                  icon={MdAdd}
+                >
+                  <Link to="add-class">
+                    <p>
+                      Add A Class
+                    </p>
+                  </Link>
+                </Sidebar.Item>
+                <Sidebar.Item
+                  as="span"
+                  icon={FaUserGraduate}
+                >
+                  <Link to="my-classes">
+                    <p>
+                      My Classes
+                    </p>
+                  </Link>
+                </Sidebar.Item>
+                <Sidebar.Item
+                  as="span"
+                  icon={MdPeople}
+                >
+                  <Link to="manage-students">
+                    <p>
+                      Manage Students
+                    </p>
+                  </Link>
+                </Sidebar.Item>
+              </>
+            )}
+            {role === "admin" && (
+              <>
+                <Sidebar.Item
+                  as="span"
+                  icon={MdNaturePeople}
+                >
+                  <Link to="manage-classes">
+                    <p>
+                      Manage-Classes
+                    </p>
+                  </Link>
+                </Sidebar.Item>
+                <Sidebar.Item
+                  as="span"
+                  icon={MdPeople}
+                >
+                  <Link to="manage-users">
+                    <p>
+                      Manage Users
+                    </p>
+                  </Link>
+                </Sidebar.Item>
+              </>
+            )}
             <Sidebar.Item
-              href="#"
               icon={HiArrowSmLeft}
+              className="hover:cursor-pointer"
+              onClick={handleLogout}
             >
               <p>
                 Sign Out
@@ -82,7 +149,7 @@ const LeftPanel = ({ role }) => {
               icon={HiChartPie}
             >
               <p>
-                Upgrade to Pro
+                Update Profile
               </p>
             </Sidebar.Item>
             <Sidebar.Item className="[&>button]:!p-0" icon={DarkThemeToggle}>

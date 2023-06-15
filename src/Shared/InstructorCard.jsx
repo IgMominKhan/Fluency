@@ -36,7 +36,7 @@ const InstructorCard = ({ instructor }) => {
           <h4 className="text-3xl">{name}</h4>
           {isInstructorPath && <p className="!mt-2 italic">{email}</p>}
           <p>
-            {subject_areas.map((s, i) => (
+            {subject_areas?.map((s, i) => (
               <span
                 key={i}
                 className="mr-2 py-1 rounded px-2 bg-clr-accent text-white dark:bg-cyan-800 text-sm"
