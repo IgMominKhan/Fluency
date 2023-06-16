@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
 const useInstructor = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const { isLoading: isInstructorLoading, data: isInstructor, error } =
@@ -11,7 +11,7 @@ const useInstructor = () => {
       queryKey: ["isInstructor", user.email],
       queryFn: async () => {
         const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
-        return res.data.instructor;
+        return res.data?.instructor;
       },
     });
 

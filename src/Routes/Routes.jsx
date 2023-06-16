@@ -13,6 +13,8 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import ManageClasses from "../Pages/Dashboard/ManageClasses";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import MyClasses from '../Pages/Dashboard/MyClasses'
 
 // routes definations
 const Routes = createBrowserRouter(
@@ -55,13 +57,22 @@ const Routes = createBrowserRouter(
         //   path: '',
         //   element: <StudentDashboard />
         // }
-        , {
+        ,
+        {
           path: "selected-classes",
           element: <BookedClasses />,
         },
         {
           path: "enrolled-classes",
           element: <EnrolledClasses />,
+        },
+        {
+          path: "my-classes",
+          element: (
+            <InstructorRoute>
+              <MyClasses />
+            </InstructorRoute>
+          ),
         },
         {
           path: "manage-classes",

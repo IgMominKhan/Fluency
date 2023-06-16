@@ -114,7 +114,7 @@ const ClassInfo = ({ clas }) => {
         onClose={() => setOpenModal(undefined)}
       >
         <form onSubmit={(e) => handleSendFeedback(e, clas._id)}>
-          <Modal.Header>Terms of Service</Modal.Header>
+          <Modal.Header>Write A Feedback</Modal.Header>
           <Modal.Body>
             <div className="space-y-6">
               <Textarea name="feedback" required />
