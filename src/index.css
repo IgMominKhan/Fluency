@@ -10,7 +10,8 @@
 
 body {
   font-family: ubuntu;
-  overflow-x: hidden;
+  @apply !overflow-x-hidden;
+  /* scroll-snap-type-x: none; */
 }
 
 /* reuseable classes */
@@ -73,5 +74,5 @@ section {
 }
 
 .not-available {
-  @apply !border-t-red-500 !border-e-red-500 leading-tight
+  @apply !border-t-red-500 !border-e-red-500 leading-tight;
 }

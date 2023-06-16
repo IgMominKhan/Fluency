@@ -42,6 +42,9 @@ const ManageClasses = () => {
                 <th scope="col" className="px-6 py-3 text-center">
                   Action
                 </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>

@@ -1,10 +1,12 @@
-import { Button } from "flowbite-react";
+import { Button, Modal, Textarea } from "flowbite-react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useClasses from "../../Hooks/useClasses";
+import { useState } from "react";
 
 const ClassInfo = ({ clas }) => {
+  const [openModal, setOpenModal] = useState(undefined);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [refetch] = useClasses();
@@ -15,6 +17,7 @@ const ClassInfo = ({ clas }) => {
       `/classes/${clsId}?email=${user?.email}`,
       { status },
     );
+
     if (res.data.modifiedCount) {
       refetch();
       Swal.fire({
@@ -24,6 +27,25 @@ const ClassInfo = ({ clas }) => {
         timer: 3000,
       });
     }
+  };
+
+  // send feedback
+  const handleSendFeedback = async (e, id) => {
+    e.preventDefault();
+    const feedback = e?.target?.feedback?.value;
+    const res = await axiosSecure.patch(`/classes/${id}?email=${user?.email}`, {
+      feedback,
+    });
+    if (res.data.modifiedCount) {
+      refetch();
+      Swal.fire({
+        title: "Success",
+        text: `Feedback send successful`,
+        icon: "success",
+        timer: 2000,
+      });
+    }
+    setOpenModal(undefined);
   };
   return (
     <>
@@ -54,7 +76,8 @@ const ClassInfo = ({ clas }) => {
         </td>
         <td className="px-6 py-4 text-center">
           <Button
-            disabled={clas?.status === "approved" && true}
+            disabled={clas?.status === "approved" ||
+              clas?.status === "denied" && true}
             onClick={() => handleChangeStatus(clas?._id, "denied")}
             size="xs"
             color="failure"
@@ -67,13 +90,46 @@ const ClassInfo = ({ clas }) => {
           <Button
             size="xs"
             onClick={() => handleChangeStatus(clas?._id, "approved")}
-            disabled={clas?.status === "approved" && true}
+            disabled={clas?.status === "approved" ||
+              clas?.status === "denied" && true}
             className="uppercase"
           >
             Approve
           </Button>
         </td>
+
+        <td className="px-6 py-4 text-center">
+          <Button
+            size="xs"
+            onClick={() => setOpenModal("default")}
+            className="uppercase"
+          >
+            Send Feedback
+          </Button>
+        </td>
       </tr>
+      {/* modal content */}
+      <Modal
+        show={openModal === "default"}
+        onClose={() => setOpenModal(undefined)}
+      >
+        <form onSubmit={(e) => handleSendFeedback(e, clas._id)}>
+          <Modal.Header>Terms of Service</Modal.Header>
+          <Modal.Body>
+            <div className="space-y-6">
+              <Textarea name="feedback" required />
+            </div>
+          </Modal.Body>
+          <Modal.Footer className="flex-row-reverse gap-5">
+            <Button type="submit">
+              Send
+            </Button>
+            <Button color="gray" onClick={() => setOpenModal(undefined)}>
+              Cancel
+            </Button>
+          </Modal.Footer>
+        </form>
+      </Modal>
     </>
   );
 };
