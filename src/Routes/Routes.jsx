@@ -16,6 +16,7 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import MyClasses from "../Pages/Dashboard/MyClasses";
 import AddClass from "../Pages/Dashboard/AddClass";
+import ErrorPage from "../Pages/ErrorPage";
 
 // routes definations
 const Routes = createBrowserRouter(
@@ -23,6 +24,7 @@ const Routes = createBrowserRouter(
     {
       path: "/",
       element: <HomeLayout />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
@@ -55,10 +57,9 @@ const Routes = createBrowserRouter(
       ),
       children: [
         {
-          path: '',
-          element: <Dashboard />
-        }
-        ,
+          path: "",
+          element: <Dashboard />,
+        },
         {
           path: "selected-classes",
           element: <BookedClasses />,

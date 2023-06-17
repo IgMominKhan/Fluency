@@ -29,7 +29,7 @@ const AddClass = () => {
             Swal.fire({
               title: "Success",
               text: "Your class is in pending",
-              icons: "success",
+              icon: "success",
               timer: 2000,
             });
             form.reset();
@@ -44,9 +44,8 @@ const AddClass = () => {
       title: form.className.value,
       total_available_sit: parseInt(form.availableSit.value),
       price: parseFloat(form.price.value),
-      status:'pending',
-      enrolled_students: 0
-      
+      status: "pending",
+      enrolled_students: 0,
     };
 
     console.log(data);
