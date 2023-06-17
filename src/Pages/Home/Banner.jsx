@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useRef } from "react";
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 const Banner = () => {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
@@ -63,9 +64,11 @@ const Banner = () => {
                 <h1 className="title">
                   {item.title}
                 </h1>
-                <Button className="px-8 uppercase font-semibold leading-tight mt-5">
-                  sign up
-                </Button>
+                <Link to="register">
+                  <Button className="px-8 uppercase font-semibold leading-tight mt-5">
+                    sign up
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </SwiperSlide>

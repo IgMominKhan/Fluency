@@ -6,10 +6,9 @@ import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 
-const ClassCard = ({ item }) => {
+const ClassCard = ({ item, role }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const role = "amin";
   const {
     _id,
     title,

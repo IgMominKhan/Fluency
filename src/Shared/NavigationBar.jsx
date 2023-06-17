@@ -116,9 +116,16 @@ const NavigationBar = () => {
               Contact
             </NavLink>
           </Navbar.Link>
-          <Button className="uppercase md:hidden mt-5 self-start text-white !bg-cyan-800 dark!bg-cyan-700 px-8">
-            Login
-          </Button>
+          <NavLink to="login">
+            <Button className="uppercase md:hidden mt-5 self-start text-white !bg-cyan-800 dark!bg-cyan-700 px-8 ">
+              Login
+            </Button>
+          </NavLink>
+          {/* <NavLink to="register"> */}
+          {/*   <Button className="uppercase md:hidden mt-5 self-start text-white !bg-cyan-800 dark!bg-cyan-700 px-8 max-w-[9rem]"> */}
+          {/*     Register */}
+          {/*   </Button> */}
+          {/* </NavLink> */}
         </Navbar.Collapse>
       </Navbar>
     </div>
