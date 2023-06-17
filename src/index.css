@@ -76,3 +76,7 @@ section {
 .not-available {
   @apply !border-t-red-500 !border-e-red-500 leading-tight;
 }
+
+:is(.dark) #sidebar li:hover * {
+  color: white;
+}

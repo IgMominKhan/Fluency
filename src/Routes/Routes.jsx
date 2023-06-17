@@ -14,7 +14,8 @@ import ManageClasses from "../Pages/Dashboard/ManageClasses";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
-import MyClasses from '../Pages/Dashboard/MyClasses'
+import MyClasses from "../Pages/Dashboard/MyClasses";
+import AddClass from "../Pages/Dashboard/AddClass";
 
 // routes definations
 const Routes = createBrowserRouter(
@@ -53,10 +54,10 @@ const Routes = createBrowserRouter(
         </PrivateRoute>
       ),
       children: [
-        // {
-        //   path: '',
-        //   element: <StudentDashboard />
-        // }
+        {
+          path: '',
+          element: <Dashboard />
+        }
         ,
         {
           path: "selected-classes",
@@ -71,6 +72,14 @@ const Routes = createBrowserRouter(
           element: (
             <InstructorRoute>
               <MyClasses />
+            </InstructorRoute>
+          ),
+        },
+        {
+          path: "add-class",
+          element: (
+            <InstructorRoute>
+              <AddClass />
             </InstructorRoute>
           ),
         },

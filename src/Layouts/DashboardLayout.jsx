@@ -10,7 +10,7 @@ import useRole from "../Hooks/useRole";
 const DashboardLayout = () => {
   const [role] = useRole();
   return (
-    <div className="md:flex">
+    <div className="md:flex align-items-stratch">
       <LeftPanel role={role} />
       <div className="min-h-screen flex-1">
         <Outlet />

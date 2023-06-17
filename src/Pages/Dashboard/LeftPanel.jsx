@@ -22,21 +22,24 @@ const LeftPanel = ({ role }) => {
   };
   return (
     <>
-      <Sidebar className="h-screen [&>div]:rounded-none w-full max-w-xs">
-        <Sidebar.Items className="p-4 -m-4">
+      <Sidebar className="[&>div]:rounded-none !w-full lg:min-w-[20rem] md:max-w-fit">
+        <Sidebar.Items id="sidebar" className="!h-full min-h-screen p-4 -m-4  bg-clr-accent [&_*]:text-clr-primary">
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="/">
-              <h1 className="text-4xl mb-10">
-                Fluency
-              </h1>
+            
+            <Sidebar.Item as='span' className='group'> 
+              <Link to="/" className="dark:group-hover:[&_*]:text-white">
+                <h1 className="text-4xl mb-5">
+                  Fluency
+                </h1>
+              </Link>
             </Sidebar.Item>
             <Sidebar.Item
-              href="#"
+              as="span"
               icon={HiChartPie}
             >
-              <p>
+              <Link to="/dashboard">
                 Dashboard
-              </p>
+              </Link>
             </Sidebar.Item>
             {role === "student" && (
               <>
