@@ -8,7 +8,7 @@
   src: url("./assets/Fonts/ubuntu.ttf");
 }
 
-body {
+html,body {
   font-family: ubuntu;
   @apply !overflow-x-hidden;
   /* scroll-snap-type-x: none; */

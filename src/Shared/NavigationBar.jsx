@@ -88,31 +88,46 @@ const NavigationBar = () => {
         </div>
         <Navbar.Collapse className="md:justify-center me-8">
           <Navbar.Link as="span" className="nav-link">
-            <NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) => isActive ? `!text-cyan-800` : ""}
+            >
               Home
             </NavLink>
           </Navbar.Link>
           {user &&
             (
               <Navbar.Link as="span" className="nav-link">
-                <NavLink to="/dashboard">
+                <NavLink
+                  to="/dashboard"
+                  className={({ isActive }) => isActive ? `!text-cyan-800` : ""}
+                >
                   Dashboard
                 </NavLink>
               </Navbar.Link>
             )}
 
-          <NavLink to="/instructors">
-            <Navbar.Link as="span" className="nav-link">
-              Instructors
-            </Navbar.Link>
-          </NavLink>
           <Navbar.Link as="span" className="nav-link">
-            <NavLink to="/classes">
+            <NavLink
+              to="/instructors"
+              className={({ isActive }) => isActive ? `!text-cyan-800` : ""}
+            >
+              Instructors
+            </NavLink>
+          </Navbar.Link>
+          <Navbar.Link as="span" className="nav-link">
+            <NavLink
+              to="/classes"
+              className={({ isActive }) => isActive ? `!text-cyan-800` : ""}
+            >
               Classes
             </NavLink>
           </Navbar.Link>
           <Navbar.Link as="span" className="nav-link">
-            <NavLink>
+            <NavLink
+              // to="#contact"
+              // className={({ isActive }) => isActive ? `!text-cyan-800` : ""}
+            >
               Contact
             </NavLink>
           </Navbar.Link>

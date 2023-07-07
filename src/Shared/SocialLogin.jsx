@@ -31,8 +31,7 @@ const SocialLogin = () => {
   return (
     <>
       <div className="inline-flex items-center justify-center w-full">
-        <hr className="w-64 h-px my-8 bg-gray-200 border-0" />
-        <span className="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-clr-accent/60 left-1/20">
+        <span className="text-center  text-xl px-3 mt-2 font-medium text-gray-800 dark:text-white">
           or
         </span>
       </div>
@@ -48,7 +47,7 @@ const SocialLogin = () => {
             Sign In with Google
           </Button>
           <Button
-            className="bg-black flex text-white mx-auto text-lg rounded font-bold"
+            className="bg-black dark:bg-cyan-800  flex text-white mx-auto text-lg rounded font-bold"
             type="button"
           >
             <VscGithub className="text-2xl mr-3" />
