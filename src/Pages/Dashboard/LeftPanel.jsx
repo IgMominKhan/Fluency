@@ -22,7 +22,7 @@ const LeftPanel = ({ role }) => {
   };
   return (
     <>
-      <Sidebar className="[&>div]:rounded-none !w-full lg:min-w-[20rem] md:max-w-fit">
+      <Sidebar className="[&>div]:rounded-none !h-full !w-full lg:min-w-[20rem] md:max-w-fit">
         <Sidebar.Items id="sidebar" className="!h-full min-h-screen p-4 -m-4  bg-clr-accent [&_*]:text-clr-primary">
           <Sidebar.ItemGroup>
             
